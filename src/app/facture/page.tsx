@@ -377,8 +377,8 @@ const FactureGenerator: React.FC = () => {
 
 
     return (
-        <div className="w-full min-h-screen flex justify-around bg-gray-100 py-4">
-            <div id="invoice" className="w-full max-w-4xl bg-white shadow-lg p-6">
+        <div className="w-full min-h-screen flex flex-col md:flex-row justify-around bg-gray-100 py-4">
+            <div id="invoice" className="w-full max-w-4xl bg-white shadow-lg p-6 text-xs md:text-base">
                 {/* Header */}
                 <header className="flex justify-between items-center mb-10">
                     <div className="w-48 flex items-center justify-center">
@@ -432,7 +432,7 @@ const FactureGenerator: React.FC = () => {
                         </div>
                     </div>
                     <div className="w-1/3 text-left flex flex-col justify-end">
-                        <h2 className="text-sm font-semibold text-gray-600 mt-4">Facturé à</h2>
+                        <h2 className="font-semibold text-gray-600 mt-4">Facturé à</h2>
                         <textarea
                             placeholder="À qui s’adresse cette facture ?"
                             value={client.billTo}
@@ -445,7 +445,7 @@ const FactureGenerator: React.FC = () => {
 
                 {/* Services Table */}
                 <section className="mb-6">
-                    <table className="w-full border-collapse">
+                    <table className="w-full border-collapse text-xs md:text-sm">
                         <thead>
                             <tr className="bg-blue-900 text-white">
                                 <th className="p-2 text-left">Prestation</th>
@@ -512,8 +512,8 @@ const FactureGenerator: React.FC = () => {
                 </section>
 
                 {/* Notes, Terms, and Totals */}
-                <section className="flex justify-between">
-                    <div className="w-1/2 text-sm">
+                <section className="flex justify-between gap-5 md:gap-36">
+                    <div className="flex-1 md:text-sm">
                         <h2 className="font-semibold text-gray-600">Notes :</h2>
                         <p>TVA NON APPLICABLE, Article 293 B du CGI</p>
                         <textarea
@@ -557,9 +557,9 @@ const FactureGenerator: React.FC = () => {
                 </section>
             </div>
 
-            <div className='relative w-1/3'>
+            <div className='relative w-full md:w-1/3'>
                 {/* PDF Preview */}
-                <div className="w-full screen-only sticky top-0 left-0">
+                <div className="w-full screen-only md:sticky top-0 left-0">
                     <div className="border h-[80vh]">
                         {showPDF && (
                             <PDFViewer width="100%" height="100%">
@@ -581,7 +581,7 @@ const FactureGenerator: React.FC = () => {
                         )}
                     </div>
                     {/* Download Button */}
-                    <div className="mt-4 screen-only">
+                    <div className="w-full mt-4 screen-only">
                         {showPDF && (
                             <PDFDownloadLink
                                 document={
