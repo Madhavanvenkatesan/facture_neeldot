@@ -178,7 +178,7 @@ const InvoicePDF = ({
             <View style={styles.table}>
                 <View style={styles.tableHeader}>
                     <Text style={styles.tableCell}>Prestation</Text>
-                    <Text style={styles.tableCellRight}>Quantité [Hours]</Text>
+                    <Text style={styles.tableCellRight}>Quantité [Heures]</Text>
                     <Text style={styles.tableCellRight}>Tarif [HT]</Text>
                     <Text style={styles.tableCellRight}>TVA</Text>
                     <Text style={styles.tableCellRight}>Montant [HT]</Text>
@@ -194,9 +194,9 @@ const InvoicePDF = ({
                             <View key={index} style={styles.tableRow}>
                                 <Text style={styles.tableCell}>{service.description || 'Description...'}</Text>
                                 <Text style={styles.tableCellRight}>{quantity.toFixed(0)}</Text>
-                                <Text style={styles.tableCellRight}>€ {rate.toFixed(2)}</Text>
+                                <Text style={styles.tableCellRight}>{rate.toFixed(2)} €</Text>
                                 <Text style={styles.tableCellRight}>0 %</Text>
-                                <Text style={styles.tableCellRight}>€ {amount.toFixed(2)}</Text>
+                                <Text style={styles.tableCellRight}>{amount.toFixed(2)} €</Text>
                             </View>
                         );
                     })}
@@ -206,26 +206,33 @@ const InvoicePDF = ({
             {/* Notes, Terms, and Totals */}
             <View style={styles.footer}>
                 <View style={styles.footerLeft}>
-                    <Text style={styles.bold}>Notes :</Text>
-                    <Text style={[styles.textSm, styles.gap4]}>TVA NON APPLICABLE, Article 293 B du CGI</Text>
-                    <Text style={[styles.textSm, styles.gap4]}>{notes}</Text>
+                    <Text style={styles.bold}>Coordonnées bancaires :</Text>
+                    <Text style={[styles.textSm, styles.gap4]}>IBAN: FR68 2004 1010 0526 9833 5T02 690</Text>
+                    <Text style={styles.textSm}>BIC: PSSTFRPPLIL</Text>
+                    <Text style={styles.textSm}>Nom de la banque : La poste</Text>
+                    <Text style={styles.textSm}>Titulaire : {freelancer.name}</Text>
+
                     <Text style={[styles.bold, styles.gap14]}>Conditions de paiement :</Text>
                     <Text style={[styles.textSm, styles.gap4]}>100 % soit {balanceDue.toFixed(2)} € à payer 30 jours fin de mois</Text>
                     <Text style={[styles.textSm, styles.gap4]}>{terms}</Text>
+
+                    <Text style={styles.bold}>Notes :</Text>
+                    <Text style={[styles.textSm, styles.gap4]}>TVA NON APPLICABLE, Article 293 B du CGI</Text>
+                    <Text style={[styles.textSm, styles.gap4]}>{notes}</Text>
                 </View>
                 <View style={styles.footerRight}>
                     <Text style={styles.textSm}>
-                        <Text style={styles.bold}>Sous-total HT: </Text>€ {subtotal.toFixed(2)}
+                        <Text style={styles.bold}>Sous-total HT: </Text>{subtotal.toFixed(2)} €
                     </Text>
                     <Text style={[styles.textSm, styles.gap4]}>
-                        <Text style={styles.bold}>TVA (0%): </Text>€ {tax.toFixed(2)}
+                        <Text style={styles.bold}>TVA (0%): </Text>{tax.toFixed(2)} € 
                     </Text>
                     <Text style={[styles.textSm, styles.gap4]}>
-                        <Text style={styles.bold}>Montant payé: </Text>€ {amountPaid.toFixed(2)}
+                        <Text style={styles.bold}>Montant payé: </Text>{amountPaid.toFixed(2)} € 
                     </Text>
                     <View style={styles.hr} />
                     <Text style={styles.textLg}>
-                        <Text style={styles.bold}>Total TTC: </Text>€ {balanceDue.toFixed(2)}
+                        <Text style={styles.bold}>Total TTC: </Text>{balanceDue.toFixed(2)} € 
                     </Text>
                 </View>
             </View>
